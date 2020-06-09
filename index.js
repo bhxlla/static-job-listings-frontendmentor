@@ -127,8 +127,6 @@ function filterClick(ev) {
         filterParent.classList.add('none');
         main.classList.remove('main-space') ;
     }
-
-
     this.remove();
     filterJobs(this.dataset.filter);
 }
