@@ -2,6 +2,16 @@ const filtersSelected = new Set();
 const filters = document.querySelector('.filter-cover');
 const clear = document.querySelector('.clear');
 
+const bgImg = document.getElementById('bg-img');
+
+if(window.innerWidth <= 540 ) {
+    let bg = bgImg.src.split('/') ;
+    console.log(bg , bg.length );
+    bg[bg.length-1] = 'bg-header-mobile.svg' ;
+    bgImg.src = bg.join('/');
+}
+
+
 const filterParent = filters.parentElement;
 
 let data, main = document.querySelector('main'), realJobList = [];
