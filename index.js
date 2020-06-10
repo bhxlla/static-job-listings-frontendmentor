@@ -25,7 +25,7 @@ fetch('data.json')
 
 function createList(data) {
 
-    filterParent.classList.add('none');
+    // filterParent.classList.add('none');
 
     let docf = document.createDocumentFragment();
     data.forEach(el => {
