@@ -141,9 +141,28 @@ function filterClick(ev) {
     filterJobs(this.dataset.filter);
 }
 
+function whichTransitionEvent(){
+    var t;
+    var el = document.createElement('fakeelement');
+    var transitions = {
+      'WebkitTransition' :'webkitTransitionEnd',
+      'MozTransition'    :'transitionend',
+      'MSTransition'     :'msTransitionEnd',
+      'OTransition'      :'oTransitionEnd',
+      'transition'       :'transitionEnd'
+    }
+  
+    for(t in transitions){
+      if( el.style[t] !== undefined ){
+        return transitions[t];
+      }
+    }
+  }
+
 function hideJob(job) {
+    let event = whichTransitionEvent() ;
     job.classList.add('fade');
-    job.addEventListener('transitionend', ev => job.classList.add('none'), { once: true });
+    job.addEventListener(`${event}`, ev => job.classList.add('none'), { once: true });
 }
 
 
@@ -173,7 +192,6 @@ function check(set1, set2) {
     })
     return bool;
 }
-
 
 clear.addEventListener('click', ev => {
     if (filtersSelected.size == 0) {
